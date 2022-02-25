@@ -1,8 +1,10 @@
 <template>
   <div id="app">
 
-    <!-- ascolto $emit della parola ricercata e lancio funzione per richiesta al server -->
-    <myHeader @keywordValue="getContentFromApi"/>
+    <!-- ascolto emit della lingua e imposto stringa con valore corrispondente
+      ascolto $emit della parola ricercata e lancio funzione per richiesta al server
+     -->
+    <myHeader @langValue="setLangString" @keywordValue="getContentFromApi"/>
 
     <!-- passo al main l'oggetto dei film cercati -->
     <myMain :filmListArray='filmListArray'/>
@@ -26,6 +28,8 @@ export default {
 
   data(){
     return{
+      // stringa vuota per valore lingua
+      lang: '',
 
       // array vuoto per lista dei film cercati, passo con props per popolare al main
       filmListArray : [],
@@ -33,9 +37,19 @@ export default {
   },
 
   methods:{
+    setLangString(lang){
+      if(lang==""){
+        this.lang= "en-US"
+      } else {
+        
+        this.lang=lang;
+
+      }
+    },
+
     getContentFromApi(keywordValue){
       // sintassi con backtick
-      axios.get(`https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=it-IT&query=${keywordValue}`)
+      axios.get(`https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=${this.lang}&query=${keywordValue}`)
         // Arrow function per riferirmi ad array vuoto fuori axios
         .then((response) =>{
 

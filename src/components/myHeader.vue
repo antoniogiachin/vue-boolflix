@@ -9,6 +9,14 @@
                 <span class="text-danger fs-4">Boolfix</span> 
             </div>
 
+            <div class="col-1 me-2">
+                <!-- v-model su valore della lingue e creazione emit al cambio su select -->
+                <select name="lang-select" v-model="languageValue" @change="setLanguageValue()" id="lang-select">
+                    <option value="">Inglese</option>
+                    <option value="it-IT">Italiano</option>
+                </select>
+            </div>
+
             <div class="col d-flex justify-content-end">
                 <input type="text" placeholder="Cerca qui" v-model="searchKeyword">
                 <button @click="setKeywordValue">Cerca</button>
@@ -28,16 +36,24 @@ export default {
     data(){
         return{
 
-            // V-model su input
+            // V-model su ricerca nome film input
             searchKeyword:'',
+
+            // V-model su select lingua
+            languageValue : ''
 
         }
     },
 
     methods : {
-
+        // emit ricerca film
         setKeywordValue(){
             this.$emit('keywordValue', this.searchKeyword);
+        },
+
+        // emit selezione lingua
+        setLanguageValue(){
+            this.$emit('langValue', this.languageValue);
         }
         
     }
