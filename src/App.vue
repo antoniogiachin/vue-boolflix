@@ -3,7 +3,9 @@
 
     <!-- ascolto $emit della parola ricercata e lancio funzione per richiesta al server -->
     <myHeader @keywordValue="getContentFromApi"/>
-    <myMain/>
+
+    <!-- passo al main l'oggetto dei film cercati -->
+    <myMain :filmListArray='filmListArray'/>
     
   </div>
 </template>
@@ -22,12 +24,28 @@ export default {
     myMain,
   },
 
+  data(){
+    return{
+
+      // array vuoto per lista dei film cercati, passo con props per popolare al main
+      filmListArray : [],
+    }
+  },
+
   methods:{
     getContentFromApi(keywordValue){
+      // sintassi con backtick
       axios.get(`https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=it-IT&query=${keywordValue}`)
-        .then(function (response) {
+        // Arrow function per riferirmi ad array vuoto fuori axios
+        .then((response) =>{
+
         // handle success
         console.log(response);
+        
+        // array di film
+        this.filmListArray = response.data.results
+        console.log(this.filmListArray)
+
     })
       .catch(function (error) {
         // handle error

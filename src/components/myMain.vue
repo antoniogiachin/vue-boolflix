@@ -2,10 +2,13 @@
     <main>
         <div class="container">
             <div class="row">
-                <div class="col">
+                <div class="col text-white" v-for="(film, index) in filmListArray" :key="index">
                     scheda film
-                    <ul>
-                        <li>a</li>
+                    <ul >
+                        <li>{{film.title}}</li>
+                        <li>{{film.original_title}}</li>
+                        <li>{{film.original_language}}</li>
+                        <li>{{film.vote_average}}</li>
                     </ul>
                 </div>
             </div>
@@ -15,6 +18,13 @@
 
 <script>
 export default {
+    name: 'myMain',
+
+    props: {
+
+        "filmListArray": Array,
+        
+    }
 
 }
 </script>
@@ -24,5 +34,6 @@ main{
     background-color: #434343;
     height: calc(100vh - 80px);
     width: 100%;
+    overflow: auto;
 }
 </style>
