@@ -26,3 +26,8 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 #### Main color
 #434343
+
+### api base
+https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=it-IT&query={{TESTO}}
+
+`https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=it-IT&query=${keywordValue}`

@@ -10,8 +10,8 @@
             </div>
 
             <div class="col d-flex justify-content-end">
-                <input type="text" placeholder="Cerca qui">
-                <button>Cerca</button>
+                <input type="text" placeholder="Cerca qui" v-model="searchKeyword">
+                <button @click="setKeywordValue">Cerca</button>
             </div>
 
         </div>
@@ -23,7 +23,24 @@
 
 <script>
 export default {
+    name: 'myHeader',
 
+    data(){
+        return{
+
+            // V-model su input
+            searchKeyword:'',
+
+        }
+    },
+
+    methods : {
+
+        setKeywordValue(){
+            this.$emit('keywordValue', this.searchKeyword);
+        }
+        
+    }
 }
 </script>
 
