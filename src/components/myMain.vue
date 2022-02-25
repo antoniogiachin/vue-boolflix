@@ -1,29 +1,27 @@
 <template>
     <main>
         <div class="container">
-            <div class="row">
-                <div class="col text-white" v-for="(film, index) in filmListArray" :key="index">
-                    scheda film
-                    <ul >
-                        <li>{{film.title}}</li>
-                        <li>{{film.original_title}}</li>
-                        <li>{{film.original_language}}</li>
-                        <li>{{film.vote_average}}</li>
-                    </ul>
-                </div>
-            </div>
+
+            <myFilmList :filmListArray='filmListArray'/>
+            
         </div>
     </main>
 </template>
 
 <script>
+import myFilmList from './partials/myFilmList.vue'
+
 export default {
     name: 'myMain',
+
+    components : {
+        myFilmList,
+    },
 
     props: {
 
         "filmListArray": Array,
-        
+
     }
 
 }
