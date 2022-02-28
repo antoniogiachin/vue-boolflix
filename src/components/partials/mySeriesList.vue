@@ -4,9 +4,12 @@
             <ul>
                 <li>{{film.name}}</li>
                 <li>{{film.original_name}}</li>
+                <!-- componente bandiera -->
                 <myFlags :film="film"/>
-                <li>{{film.vote_average}}</li>
+                <!-- componente voto stelle -->
+                <myStarsVote :film="film"/>
                 <li>{{film.overview}}</li>
+                <!-- componente poster -->
                 <myPoster :film="film"/>
             </ul>
         </div>
@@ -16,6 +19,7 @@
 <script>
 import myFlags from './myFlags.vue'
 import myPoster from './myPoster.vue'
+import myStarsVote from './myStarsVote.vue'
 
 export default {
     name: 'mySeriesList',
@@ -24,6 +28,8 @@ export default {
         myFlags,
 
         myPoster,
+
+        myStarsVote,
     },
 
     props: {
