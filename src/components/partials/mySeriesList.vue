@@ -2,7 +2,7 @@
     <div class="row">
         <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-4 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
             <ul>
-                
+
                 <li>{{film.name}}</li>
                 <li>{{film.original_name}}</li>
                 <!-- componente bandiera -->
@@ -64,5 +64,6 @@ export default {
     width: 342px;
     background-size: cover;
     filter: opacity(0.8);
+    overflow: auto;
 }
 </style>

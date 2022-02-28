@@ -64,5 +64,6 @@ export default {
     width: 342px;
     background-size: cover;
     filter: opacity(0.8);
+    overflow: auto;
 }
 </style>
