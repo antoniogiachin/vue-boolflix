@@ -3,6 +3,10 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import Vue from 'vue'
 import App from './App.vue'
 
+import LangFlag from 'vue-lang-code-flags';
+ 
+Vue.component('lang-flag', LangFlag);
+
 Vue.config.productionTip = false
 
 new Vue({
