@@ -48,7 +48,7 @@ export default {
     },
 
     getContentFromApi(keywordValue){
-
+      
       // rendo chiamata dinamica con il params
       const params = {
 

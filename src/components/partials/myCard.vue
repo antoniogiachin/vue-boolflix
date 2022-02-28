@@ -1,5 +1,5 @@
 <template>
-    <div :style="{backgroundImage: `url(${posterUrlStart}${posterSize}${stringaUrlImg}`}" class="col-4 ms_col text-white">
+    <div :style="{backgroundImage: stringaUrlImg}" class="col-4 ms_col text-white">
         <span>Scheda Film</span>
         <ul >
             
@@ -46,14 +46,21 @@ export default {
             posterUrlStart: 'https://image.tmdb.org/t/p/',
 
             // stringa url finale img
-            stringaUrlImg: this.film.poster_path,
+            stringaUrlImg:``,
 
         }
     },
 
     methods : {
-
+        getUrl(){
+            this.stringaUrlImg = `url(${this.posterUrlStart}${this.posterSize}${this.film.poster_path}`;
+        }
     },
+
+    mounted(){
+        this.getUrl()
+        console.log(this.stringaUrlImg)
+    }
 
 }
 </script>
