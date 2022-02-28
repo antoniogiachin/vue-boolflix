@@ -1,5 +1,5 @@
 <template>
-    <div class="col text-white">
+    <div :style="{backgroundImage: `url(${posterUrlStart}${posterSize}${stringaUrlImg}`}" class="col-4 ms_col text-white">
         <span>Scheda Film</span>
         <ul >
             
@@ -11,7 +11,7 @@
             <myStarsVote :film="film"/>
             <li>{{film.overview}}</li>
             <!-- componente poster -->
-            <myPoster :film="film"/>
+            <!-- <myPoster :film="film"/> -->
 
         </ul>
         
@@ -20,7 +20,7 @@
 
 <script>
 import myFlags from './myFlags.vue'
-import myPoster from './myPoster.vue'
+// import myPoster from './myPoster.vue'
 import myStarsVote from './myStarsVote.vue'
 
 
@@ -35,19 +35,38 @@ export default {
     components : {
         myFlags,
 
-        myPoster,
+        // myPoster,
 
         myStarsVote,
     },
 
+    data(){
+        return{
+
+            // dimensioni immagine
+            posterSize : 'w342',
+            
+            // url iniziale img
+            posterUrlStart: 'https://image.tmdb.org/t/p/',
+
+            // stringa url finale img
+            stringaUrlImg: this.film.poster_path,
+
+        }
+    },
+
+    methods : {
+
+    },
 
 }
 </script>
 
 <style lang="scss" scoped>
-.col{
+.ms_col{
     height: 513px;
     width: 342px;
-    background-image: url();
+    background-size: cover;
+    filter: opacity(0.8);
 }
 </style>
