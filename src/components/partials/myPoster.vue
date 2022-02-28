@@ -1,6 +1,6 @@
 <template>
     <li>
-        <img :src="posterUrlStart + posterSize + film.poster_path " alt="">
+        <img :src="posterUrlStart + posterSize + film.poster_path " alt="poster-img">
     </li>
 </template>
 
@@ -15,11 +15,12 @@ export default {
 
     data(){
         return {
+
+            // dimensioni immagine
             posterSize : 'w342',
             
+            // url iniziale img
             posterUrlStart: 'https://image.tmdb.org/t/p/',
-
-
 
         }
     }

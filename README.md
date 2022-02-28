@@ -12,3 +12,9 @@ icona inglese
 
 icona italiano 
 <lang-flag iso="it"/>
+
+stella solida
+<i class="fa-solid fa-star"></i>
+
+stella vuota
+<i class="fa-regular fa-star"></i>
