@@ -33,6 +33,9 @@ export default {
 
       // array vuoto per lista dei film cercati, passo con props per popolare al main
       filmListArray : [],
+
+      // setto variabili api_key per params dinamici
+      api_key : 'f5044f322300c34daea30ea45b73a953',
     }
   },
 
@@ -42,8 +45,23 @@ export default {
     },
 
     getContentFromApi(keywordValue){
+
+      // rendo chiamata dinamica con il params
+      const params = {
+
+        params: {
+
+          api_key : this.api_key,
+  
+          query : keywordValue,
+  
+          language: this.lang,
+        }
+
+      };
+
       // sintassi con backtick
-      axios.get(`https://api.themoviedb.org/3/search/movie?&api_key=f5044f322300c34daea30ea45b73a953&language=${this.lang}&query=${keywordValue}`)
+      axios.get('https://api.themoviedb.org/3/search/movie', params)
         // Arrow function per riferirmi ad array vuoto fuori axios
         .then((response) =>{
 
