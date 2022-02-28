@@ -1,18 +1,6 @@
 <template>
 
     <div class="row">
-        <!-- <div class="col text-white" v-for="(film, index) in filmListArray" :key="index" :film="films">
-        <span>Scheda Film</span>
-        <ul >
-            
-            <li>{{film.title}}</li>
-            <li>{{film.original_title}}</li>
-            <li>{{film.original_language}}</li>
-            <li>{{film.vote_average}}</li>
-            <li>{{film.overview}}</li>
-
-        </ul>
-        </div> -->
         <myCard v-for="(film, index) in filmListArray" :key="index" :film="film"/>
     </div>
     

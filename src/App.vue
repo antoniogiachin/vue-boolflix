@@ -60,7 +60,7 @@ export default {
 
       };
 
-      // sintassi con backtick
+      // sintassi con params
       axios.get('https://api.themoviedb.org/3/search/movie', params)
         // Arrow function per riferirmi ad array vuoto fuori axios
         .then((response) =>{
