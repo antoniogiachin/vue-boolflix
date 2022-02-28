@@ -8,6 +8,7 @@
             <myFlags :film="film"/>
             <li>{{film.vote_average}}</li>
             <li>{{film.overview}}</li>
+            <myPoster :film="film"/>
 
         </ul>
         
@@ -16,6 +17,8 @@
 
 <script>
 import myFlags from './myFlags.vue'
+import myPoster from './myPoster.vue'
+
 
 export default {
     name: 'myCard',
@@ -27,6 +30,8 @@ export default {
 
     components : {
         myFlags,
+
+        myPoster,
     }
 
 }
