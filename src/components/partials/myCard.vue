@@ -9,7 +9,6 @@
             <myFlags :film="film"/>
             <!-- componente voto stelle -->
             <myStarsVote :film="film"/>
-            <li>{{film.vote_average}}</li>
             <li>{{film.overview}}</li>
             <!-- componente poster -->
             <myPoster :film="film"/>
