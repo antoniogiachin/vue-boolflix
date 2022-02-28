@@ -38,11 +38,16 @@ export default {
         myPoster,
 
         myStarsVote,
-    }
+    },
+
 
 }
 </script>
 
 <style lang="scss" scoped>
-
+.col{
+    height: 513px;
+    width: 342px;
+    background-image: url();
+}
 </style>

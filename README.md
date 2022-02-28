@@ -18,3 +18,5 @@ stella solida
 
 stella vuota
 <i class="fa-regular fa-star"></i>
+
+fine milestone 3
