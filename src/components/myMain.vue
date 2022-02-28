@@ -1,8 +1,10 @@
 <template>
     <main>
         <div class="container">
-
+            <h1 class="text-white text-uppercase">Film</h1>
             <myFilmList :filmListArray='filmListArray'/>
+            <h1 class="text-white text-uppercase">Serie TV</h1>
+            <mySeriesList :seriesListArray='seriesListArray'/>
             
         </div>
     </main>
@@ -10,17 +12,22 @@
 
 <script>
 import myFilmList from './partials/myFilmList.vue'
+import mySeriesList from './partials/mySeriesList.vue'
+
 
 export default {
     name: 'myMain',
 
     components : {
         myFilmList,
+        mySeriesList,
     },
 
     props: {
 
         "filmListArray": Array,
+
+        "seriesListArray": Array,
 
     }
 

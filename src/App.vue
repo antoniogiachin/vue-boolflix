@@ -6,8 +6,8 @@
      -->
     <myHeader @langValue="setLangString" @keywordValue="getContentFromApi"/>
 
-    <!-- passo al main l'oggetto dei film cercati -->
-    <myMain :filmListArray='filmListArray'/>
+    <!-- passo al main l'oggetto dei film cercati e delle serie tv -->
+    <myMain :filmListArray='filmListArray' :seriesListArray="seriesListArray"/>
     
   </div>
 </template>
@@ -33,6 +33,9 @@ export default {
 
       // array vuoto per lista dei film cercati, passo con props per popolare al main
       filmListArray : [],
+
+      // array vuoto per lista serie
+      seriesListArray : [],
 
       // setto variabili api_key per params dinamici
       api_key : 'f5044f322300c34daea30ea45b73a953',
@@ -60,27 +63,45 @@ export default {
 
       };
 
-      // sintassi con params
+      // sintassi con params, chiamata film
       axios.get('https://api.themoviedb.org/3/search/movie', params)
         // Arrow function per riferirmi ad array vuoto fuori axios
         .then((response) =>{
 
-        // handle success
-        console.log(response);
-        
-        // array di film
-        this.filmListArray = response.data.results
-        console.log(this.filmListArray)
+          // handle success
+          console.log(response);
+          
+          // array di film
+          this.filmListArray = response.data.results
+          console.log(this.filmListArray)
 
-    })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-    }
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });
+
+      // sintassi con params, chiamata serie TV
+      axios.get('https://api.themoviedb.org/3/search/tv', params)
+        // Arrow function per riferirmi ad array vuoto fuori axios
+        .then((response) =>{
+
+          // handle success
+          console.log(response);
+          
+          // array di film
+          this.seriesListArray = response.data.results
+          console.log(this.seriesListArray)
+
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        });  
+        
+    },
+
+    
   },
 
   created(){
