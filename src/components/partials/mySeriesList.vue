@@ -1,7 +1,8 @@
 <template>
     <div class="row">
-        <div class="col text-white" v-for="(film, index) in seriesListArray" :key="index">
+        <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-4 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
             <ul>
+                
                 <li>{{film.name}}</li>
                 <li>{{film.original_name}}</li>
                 <!-- componente bandiera -->
@@ -9,8 +10,7 @@
                 <!-- componente voto stelle -->
                 <myStarsVote :film="film"/>
                 <li>{{film.overview}}</li>
-                <!-- componente poster -->
-                <myPoster :film="film"/>
+
             </ul>
         </div>
     </div>
@@ -18,7 +18,6 @@
 
 <script>
 import myFlags from './myFlags.vue'
-import myPoster from './myPoster.vue'
 import myStarsVote from './myStarsVote.vue'
 
 export default {
@@ -26,8 +25,6 @@ export default {
 
     components: {
         myFlags,
-
-        myPoster,
 
         myStarsVote,
     },
@@ -39,7 +36,15 @@ export default {
 
     data(){
         return {
+
+            // dimensioni immagine
+            posterSize : 'w342',
             
+            // url iniziale img
+            posterUrlStart: 'https://image.tmdb.org/t/p/',
+
+            // stringa url finale img
+            stringaUrlImg: this.film.poster_path,
         }
     },
 
@@ -54,5 +59,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.ms_col{
+    height: 513px;
+    width: 342px;
+    background-size: cover;
+    filter: opacity(0.8);
+}
 </style>

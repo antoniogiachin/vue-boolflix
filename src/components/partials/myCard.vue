@@ -11,7 +11,6 @@
             <myStarsVote :film="film"/>
             <li>{{film.overview}}</li>
             <!-- componente poster -->
-            <!-- <myPoster :film="film"/> -->
 
         </ul>
         
@@ -20,7 +19,6 @@
 
 <script>
 import myFlags from './myFlags.vue'
-// import myPoster from './myPoster.vue'
 import myStarsVote from './myStarsVote.vue'
 
 
@@ -34,8 +32,6 @@ export default {
 
     components : {
         myFlags,
-
-        // myPoster,
 
         myStarsVote,
     },
