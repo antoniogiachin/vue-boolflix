@@ -12,8 +12,9 @@
             <div class="col-1 me-2">
                 <!-- v-model su valore della lingue e creazione emit al cambio su select -->
                 <select name="lang-select" v-model="languageValue" @change="setLanguageValue()" id="lang-select">
-                    <option value="">Inglese</option>
+                    <option value="">Seleziona la tua lingua</option>
                     <option value="it-IT">Italiano</option>
+                    <option value="en-US">Inglese</option>
                 </select>
             </div>
 

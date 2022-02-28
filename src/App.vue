@@ -38,13 +38,7 @@ export default {
 
   methods:{
     setLangString(lang){
-      if(lang==""){
-        this.lang= "en-US"
-      } else {
-        
-        this.lang=lang;
-
-      }
+      this.lang=lang;
     },
 
     getContentFromApi(keywordValue){
@@ -69,6 +63,10 @@ export default {
         // always executed
       });
     }
+  },
+
+  created(){
+    this.lang = 'it-IT'
   }
 }
 </script>

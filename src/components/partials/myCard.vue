@@ -1,7 +1,5 @@
 <template>
-
-    <div class="row">
-        <!-- <div class="col text-white" v-for="(film, index) in filmListArray" :key="index" :film="films">
+    <div class="col text-white">
         <span>Scheda Film</span>
         <ul >
             
@@ -12,25 +10,17 @@
             <li>{{film.overview}}</li>
 
         </ul>
-        </div> -->
-        <myCard v-for="(film, index) in filmListArray" :key="index" :film="film"/>
+        
     </div>
-    
 </template>
 
 <script>
-import myCard from './myCard.vue'
-
 export default {
-    name: 'myFilmList',
+    name: 'myCard',
 
-    components: {
-        myCard,
-    },
-
-    props : {
-
-        "filmListArray": Array,
+    props: {
+        
+        "film" : Object,
     }
 }
 </script>
