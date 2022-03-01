@@ -1,10 +1,9 @@
 <template>
     <div class="row gy-2">
-        <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-12 col-md-6 col-lg-4 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
+        <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-12 col-md-6 col-lg-4 col-xxl-3 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
             <div class="overlay"></div>
-            <span class="text-uppercase fw-bold text-center">Scheda Serie</span>
             <ul>
-
+                <li class="text-uppercase fw-bold text-center my-3">Scheda Serie</li>
                 <li>{{film.name}}</li>
                 <li>{{film.original_name}}</li>
                 <!-- componente bandiera -->
@@ -96,7 +95,7 @@ export default {
         position: absolute;
         display: none;
         overflow: auto;
-        padding: 0;
+        padding: 5px;
     }
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
-    <div :style="{backgroundImage: 'url(' +posterUrlStart + posterSize + film.poster_path+')'}" class=" col-12 col-md-6 col-lg-4 ms_col text-white">
+    <div :style="{backgroundImage: 'url(' +posterUrlStart + posterSize + film.poster_path+')'}" class=" col-12 col-md-6 col-lg-4 col-xxl-3 ms_col text-white">
         <div class="overlay"></div>
-        <span class="text-uppercase fw-bold text-center">Scheda Film</span>
+        
         <ul >
-            
+            <li class="text-uppercase fw-bold text-center my-3">Scheda Film</li>
             <li> <span class="fw-bold">Titolo:</span>  {{film.title}}</li>
             <li><span class="fw-bold">Titolo originale:</span> {{film.original_title}}</li>
             <!-- componente bandiera -->
@@ -91,7 +91,7 @@ export default {
         position: absolute;
         display: none;
         overflow: auto;
-        padding: 0;
+        padding: 5px;
     }
 }
 </style>
