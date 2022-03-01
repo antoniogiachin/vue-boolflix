@@ -1,5 +1,5 @@
 <template>
-    <div :style="{backgroundImage: stringaUrlImg}" class="col-4 ms_col text-white">
+    <div :style="{backgroundImage: 'url(' +posterUrlStart + posterSize + film.poster_path+')'}" class="col-4 ms_col text-white">
         <span>Scheda Film</span>
         <ul >
             
@@ -68,9 +68,10 @@ export default {
 <style lang="scss" scoped>
 .ms_col{
     height: 513px;
-    width: 342px;
+    // width: 342px;
     background-size: cover;
     filter: opacity(0.8);
     overflow: auto;
+    background-position: center;
 }
 </style>
