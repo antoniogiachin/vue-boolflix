@@ -1,6 +1,6 @@
 <template>
 
-    <div class="row">
+    <div class="row gy-2">
         <myCard v-for="(film, index) in filmListArray" :key="index" :film="film"/>
     </div>
     

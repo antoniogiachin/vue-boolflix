@@ -1,6 +1,8 @@
 <template>
-    <div class="row">
-        <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-4 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
+    <div class="row gy-2">
+        <div :style="{backgroundImage: `url(https://image.tmdb.org/t/p/w342${film.poster_path}`}" class="col-12 col-md-6 col-lg-4 ms_col text-white" v-for="(film, index) in seriesListArray" :key="index">
+            <div class="overlay"></div>
+            <span class="text-uppercase fw-bold text-center">Scheda Serie</span>
             <ul>
 
                 <li>{{film.name}}</li>
@@ -61,9 +63,40 @@ export default {
 <style lang="scss" scoped>
 .ms_col{
     height: 513px;
-    width: 342px;
     background-size: cover;
     filter: opacity(0.8);
+    background-position: center;
+    position: relative;
     overflow: auto;
+
+    .overlay{
+        position:absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba($color: #000000, $alpha: 0.9);
+        display: none;
+    }
+
+    &:hover{
+       
+       .overlay{
+           display: block;
+        }
+
+        ul {
+            display: block;
+        }
+
+    }
+
+    ul {
+        list-style-type: none;
+        position: absolute;
+        display: none;
+        overflow: auto;
+        padding: 0;
+    }
 }
 </style>

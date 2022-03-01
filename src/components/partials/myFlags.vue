@@ -1,5 +1,6 @@
 <template>
     <li>
+        <span class="fw-bold me-2">Paese di produzione:</span>
         <span v-if="noFlag">{{film.original_language}}</span>
         <span v-if="enFlag"><lang-flag iso="en"/></span>
         <span v-if="itFlag"><lang-flag iso="it"/></span>

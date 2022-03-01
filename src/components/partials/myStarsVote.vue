@@ -1,6 +1,7 @@
 <template>
     <li>
         <!-- bind della classe corrispondente -->
+        <span class="fw-bold me-2">Voto:</span>
         <i v-for="(star, index) in voteStars" :key="index" :class="star" class="text-warning"></i>
     </li>
 </template>
