@@ -12,8 +12,12 @@
         </li>
         <!-- ciclo 5 volte l'icona delle stelle di fontawasome, se soddisfa requisiti stilizza piena e vuota -->
         <li> <span class="fw-bold text-uppercase">voto: </span><i class="fa-star text-warning" v-for="n in 5" :key="n" :class="(n< voteInFive) ? 'fa-solid' : 'fa-regular'"></i> </li>
+        
+        <!-- ciclo gli attori e i generi e stampo -->
         <li><span class="fw-bold text-uppercase">cast: </span> <span v-for="(actor, index) in castArrayObj " :key="index">{{actor.name}} </span></li>
         <li> <span class="fw-bold text-uppercase">genere: </span><span v-for="(genre, index) in genresArrayObj " :key="index">{{genre.name}} </span></li>
+        
+        <!-- stampo overview -->
         <li><span class="fw-bold text-uppercase">overview: </span>{{overview}}</li>
         
     </ul>
@@ -31,16 +35,20 @@ export default {
 
     data(){
         return{
+
+            // array oggetti attori e generi
             castArrayObj: [],
 
             genresArrayObj: [],
 
+            // chiavi per chiamate server
             api_key: 'f5044f322300c34daea30ea45b73a953',
 
             id : this.film.id,
 
             language : 'en_US',
 
+            // overview film tagliata
             overview : this.film.overview.slice(0,60) + '...',
             
         }
@@ -48,7 +56,7 @@ export default {
 
     methods : {
 
-       
+        // chiamata axios per lista attori, array viene poi tagliato per mostrare solo i primi 5
         getActors(){
             
             axios.get(`https://api.themoviedb.org/3/movie/${this.id}/credits?api_key=${this.api_key}&language=${this.language}`)
@@ -67,6 +75,7 @@ export default {
                 });
         },
 
+        // chiamata axios lista generi
         getGenres(){
             axios.get(`https://api.themoviedb.org/3/movie/${this.id}?api_key=${this.api_key}&language=${this.language}`)
                 .then((response) => {
@@ -87,7 +96,7 @@ export default {
     },
 
     computed : {
-
+        // trasformo il voto per base 5
         voteInFive(){
             
             return Math.ceil(this.film.vote_average / 2);
@@ -95,6 +104,7 @@ export default {
         }
     },
 
+    // lancio alla creazione le chiamate al server per generi e attori
     created(){
         this.getActors();
 
