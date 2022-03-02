@@ -40,7 +40,7 @@ export default {
 
             language : 'en_US',
 
-            overview : this.serie.overview.slice(0,100) + '...',
+            overview : this.serie.overview.slice(0,60) + '...',
             
         }
     },

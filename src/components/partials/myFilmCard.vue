@@ -41,7 +41,7 @@ export default {
 
             language : 'en_US',
 
-            overview : this.film.overview.slice(0,100) + '...',
+            overview : this.film.overview.slice(0,60) + '...',
             
         }
     },
