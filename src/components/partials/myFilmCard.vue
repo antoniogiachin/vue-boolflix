@@ -5,10 +5,12 @@
         <li><span class="fw-bold text-uppercase">titolo originale: </span>{{film.original_title}}</li>
         <li>
             <span class="fw-bold text-uppercase">lingua originale: </span>
+            <!-- visualizza le bandiere se si soddisfano i requisiti altrimenti scrivi solo la nazione -->
             <span v-if="film.original_language !== 'en' && film.original_language !== 'it'">{{film.original_language}}</span>
             <span v-if="film.original_language == 'it'" ><country-flag country='it' size='small'/></span> 
             <span v-if="film.original_language == 'en'" ><country-flag  country='gb' size='small'/></span> 
         </li>
+        <!-- ciclo 5 volte l'icona delle stelle di fontawasome, se soddisfa requisiti stilizza piena e vuota -->
         <li> <span class="fw-bold text-uppercase">voto: </span><i class="fa-star text-warning" v-for="n in 5" :key="n" :class="(n< voteInFive) ? 'fa-solid' : 'fa-regular'"></i> </li>
         <li><span class="fw-bold text-uppercase">cast: </span> <span v-for="(actor, index) in castArrayObj " :key="index">{{actor.name}} </span></li>
         <li> <span class="fw-bold text-uppercase">genere: </span><span v-for="(genre, index) in genresArrayObj " :key="index">{{genre.name}} </span></li>

@@ -2,15 +2,18 @@
 
     <div class="row my-3">
 
-        <div v-if="showListTitle" class="col-12">
+        <div class="col-12">
+            <!-- visualizzo titolo lista solo se la lista e' popolata -->
             <h1 class="text-white" v-if="series.length >= 1">Serie Tv</h1>
         </div>
 
         <div class="col-12">
             <div class="row">
+                <!-- imposto lo sfondo con poster dinamicamente -->
                 <div class="col-12 col-md-6 col-lg-4 col-xxl-3 gy-2 ms_col" :style="{backgroundImage : 'url(' + BackgroundUrlStart + serie.poster_path +')'}" v-for="(serie, index) in series" :key="index">
 
                     <div class="overlay"></div>
+                    <!-- immagine visualizzata se non c'e poster -->
                     <img v-if="serie.poster_path == null" src="https://www.bl2.it/3156-thickbox_default/ciak-professionale-nero-strisce-bianco-nero-277-x-241-cm.jpg" alt="ciak-empty">
                     <mySerieCard :serie="serie"/>
                     
@@ -32,7 +35,6 @@ export default {
 
         "series" : Array,
 
-        "showListTitle" : Boolean,
 
     }, 
 

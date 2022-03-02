@@ -3,9 +3,11 @@
     <main class="ms_main">
         <div class="container">
 
-            <myFilmList :films="films" :showListTitle="showListTitle"/>
+            <!-- richiamo i componenti e passo loro la props dell'array di obj  -->
+
+            <myFilmList :films="films" />
                 
-            <mySeriesList :series="series" :showListTitle="showListTitle"/>
+            <mySeriesList :series="series"/>
 
         </div>
     </main>
@@ -23,8 +25,6 @@ export default {
         "films" : Array,
 
         "series" : Array,
-
-        "showListTitle" : Boolean,
 
     },
 

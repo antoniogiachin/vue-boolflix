@@ -2,14 +2,17 @@
 
     <div class="row">
 
-        <div  v-if="showListTitle" class="col-12">
+        <div class="col-12">
+            <!-- visualizzo titolo lista solo se la lista e' popolata -->
             <h1 class="text-white" v-if="films.length >= 1">Film</h1>
         </div>
 
         <div class="col-12">
             <div class="row">
+                <!-- imposto lo sfondo con poster dinamicamente -->
                 <div class=" col-12 col-sm-6 col-lg-4 col-xxl-3 g-2 ms_col" :style="{backgroundImage : 'url(' + BackgroundUrlStart + film.poster_path +')'}" v-for="(film, index) in films" :key="index">
                     <div class="overlay"></div>
+                    <!-- immagine visualizzata se non c'e poster -->
                     <img v-if="film.poster_path == null" src="https://www.bl2.it/3156-thickbox_default/ciak-professionale-nero-strisce-bianco-nero-277-x-241-cm.jpg" alt="ciak-empty">
                     <myFilmCard :film="film"/>
                     
@@ -32,7 +35,6 @@ export default {
 
         "films" : Array,
 
-        "showListTitle" : Boolean,
 
     },
 
