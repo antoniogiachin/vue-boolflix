@@ -1,14 +1,7 @@
 <template>
   <div id="app">
-
-    <!-- ascolto emit della lingua e imposto stringa con valore corrispondente
-      ascolto $emit della parola ricercata e lancio funzione per richiesta al server
-     -->
-    <myHeader @langValue="setLangString" @keywordValue="getContentFromApi"/>
-
-    <!-- passo al main l'oggetto dei film cercati e delle serie tv -->
-    <myMain :filmListArray='filmListArray' :seriesListArray="seriesListArray"/>
-    
+    <myHeader @searchKeyword="setParams"/>
+    <myMain  :films="films" :series="series" :showListTitle="showListTitle"/>
   </div>
 </template>
 
@@ -27,85 +20,80 @@ export default {
   },
 
   data(){
+
     return{
-      // stringa vuota per valore lingua
-      lang: '',
 
-      // array vuoto per lista dei film cercati, passo con props per popolare al main
-      filmListArray : [],
-
-      // array vuoto per lista serie
-      seriesListArray : [],
-
-      // setto variabili api_key per params dinamici
       api_key : 'f5044f322300c34daea30ea45b73a953',
+
+      language: 'en_US',
+
+      films : [],
+
+      series: [],
+
+      showListTitle: false,
+
     }
+
   },
 
   methods:{
-    setLangString(lang){
-      this.lang=lang;
-    },
 
-    getContentFromApi(keywordValue){
-      
-      // rendo chiamata dinamica con il params
+    setParams(keyword) {
+
       const params = {
 
         params: {
-
           api_key : this.api_key,
   
-          query : keywordValue,
+          query : keyword,
   
-          language: this.lang,
+          language: this.language,
         }
 
       };
 
-      // sintassi con params, chiamata film
-      axios.get('https://api.themoviedb.org/3/search/movie', params)
-        // Arrow function per riferirmi ad array vuoto fuori axios
-        .then((response) =>{
+      this.getFilms(params);
 
-          // handle success
-          console.log(response);
-          
-          // array di film
-          this.filmListArray = response.data.results
-          console.log(this.filmListArray)
+      this.getTv(params);
 
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });
-
-      // sintassi con params, chiamata serie TV
-      axios.get('https://api.themoviedb.org/3/search/tv', params)
-        // Arrow function per riferirmi ad array vuoto fuori axios
-        .then((response) =>{
-
-          // handle success
-          console.log(response);
-          
-          // array di film
-          this.seriesListArray = response.data.results
-          console.log(this.seriesListArray)
-
-        })
-        .catch(function (error) {
-          // handle error
-          console.log(error);
-        });  
-        
+      this.showListTitle = true;
     },
 
-    
-  },
+    getFilms(params){
+      axios.get('https://api.themoviedb.org/3/search/movie', params)
+        .then((response) => {
 
-  created(){
-    this.lang = 'it-IT'
+          this.films=response.data.results;
+          console.log(this.films);
+
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+
+    },
+
+    getTv(params){
+      axios.get('https://api.themoviedb.org/3/search/tv', params)
+        .then((response) => {
+          this.series=response.data.results;
+          console.log(this.series)
+        })
+        .catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+        .then(function () {
+          // always executed
+        });
+
+    }
+
   }
 }
 </script>

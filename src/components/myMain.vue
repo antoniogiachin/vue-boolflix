@@ -1,44 +1,47 @@
 <template>
-    <main>
+
+    <main class="ms_main">
         <div class="container">
-            <h1 class="text-white text-uppercase">Film</h1>
-            <myFilmList :filmListArray='filmListArray'/>
-            <h1 class="text-white text-uppercase">Serie TV</h1>
-            <mySeriesList :seriesListArray='seriesListArray'/>
-            
+
+            <myFilmList :films="films" :showListTitle="showListTitle"/>
+                
+            <mySeriesList :series="series" :showListTitle="showListTitle"/>
+
         </div>
     </main>
 </template>
 
 <script>
-import myFilmList from './partials/myFilmList.vue'
-import mySeriesList from './partials/mySeriesList.vue'
-
+import myFilmList from './myFilmList.vue'
+import mySeriesList from './mySeriesList.vue'
 
 export default {
-    name: 'myMain',
-
-    components : {
-        myFilmList,
-        mySeriesList,
-    },
+    name : 'myMain',
 
     props: {
 
-        "filmListArray": Array,
+        "films" : Array,
 
-        "seriesListArray": Array,
+        "series" : Array,
 
-    }
+        "showListTitle" : Boolean,
 
+    },
+
+    components: {
+
+        myFilmList,
+
+        mySeriesList,
+    },
+    
 }
 </script>
 
-<style lang="scss" scoped>
-main{
+<style>
+.ms_main{
     background-color: #434343;
-    height: calc(100vh - 80px);
-    width: 100%;
-    overflow: auto;
+    min-height: calc(100vh - 50px);
+    padding: 30px 0px;
 }
 </style>

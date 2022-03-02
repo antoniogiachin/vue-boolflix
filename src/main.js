@@ -1,14 +1,17 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 
-import Vue from 'vue'
-import App from './App.vue'
-
-import LangFlag from 'vue-lang-code-flags';
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 
- 
-Vue.component('lang-flag', LangFlag);
+
+
+import Vue from 'vue'
+
+import CountryFlag from 'vue-country-flag'
+
+Vue.component('country-flag', CountryFlag)
+
+import App from './App.vue'
 
 Vue.config.productionTip = false
 

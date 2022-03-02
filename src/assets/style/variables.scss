@@ -1,0 +1,53 @@
+@mixin ms_col{
+    height: 500px;
+    background-size: cover;
+    background-repeat: none;
+    border-radius: 20px;
+    position: relative;
+
+    .overlay{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: 0;
+        background-color: rgba($color: #000000, $alpha: 0.7);
+        border-radius: 20px;
+        display: none;
+    }
+
+    img{
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 20px;
+    }
+
+    &:hover {
+
+        .overlay{
+            display: block;
+        }
+        ul {
+            display: block;
+        }
+
+        img{
+            display: none;
+        }
+    }
+
+    ul {
+        list-style-type: none;
+        color: #fff;
+        display: none;
+        line-height: 30px;
+        position: absolute;
+        padding: 10px;
+
+
+    }
+}
